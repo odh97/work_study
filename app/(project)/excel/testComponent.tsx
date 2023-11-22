@@ -58,7 +58,7 @@ const list = [
   },
 ];
 
-export default function TestComponent() {
+export default function Exceljs() {
   // workbook 생성
   // sheet 생성
   const wb = new ExcelJS.Workbook();
