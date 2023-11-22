@@ -20,18 +20,33 @@ export default function RootLayout({
   return (
     <html>
       <body className={inter.className}>
-        <header>
-          <h1>
-            <Link href={"/"}>Web</Link>
-          </h1>
-          <ul>
-            <li>
-              <Link href={"/read/1"}>html5</Link>
-            </li>
-            <li>
-              <Link href={"/read/2"}>css3</Link>
-            </li>
-          </ul>
+        <header className={"bg-blue text-center"}>
+          <div
+            className={
+              "mx-auto flex h-[50px] w-[95%] items-center justify-between"
+            }
+          >
+            <h1 className={"inline-block w-[150px]"}>
+              <Link href={"/"}>Logo</Link>
+            </h1>
+            <ul className={"flex w-[400px] items-center justify-between"}>
+              <li>
+                <Link href={"/read/1"}>메인페이지</Link>
+              </li>
+              <li>
+                <Link href={"/read/2"}>서브페이지</Link>
+              </li>
+              <li>
+                <Link href={"/read/2"}>서브페이지</Link>
+              </li>
+              <li>
+                <Link href={"/read/2"}>서브페이지</Link>
+              </li>
+            </ul>
+            <Link className={"card"} href={"/login"}>
+              로그인 / 회원가입
+            </Link>
+          </div>
         </header>
         {children}
       </body>

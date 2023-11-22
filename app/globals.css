@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+/*레이어 base는 일반 HTML 요소에 적용되는 재설정 규칙이나 기본 스타일과 같은 항목을 위한 것입니다.*/
+/*레이어 components는 유틸리티로 재정의할 수 있는 클래스 기반 스타일을 위한 것입니다.*/
+/*레이어 utilities는 항상 다른 스타일보다 우선해야 하는 작은 단일 목적 클래스용입니다.*/
+
+@layer base {
+  h1 {
+    @apply text-2xl;
+  }
+  h2 {
+    @apply text-xl;
+  }
+
+}
+@layer components {
+  .card {
+    @apply bg-amber-400 w-[150px] rounded-lg py-3 text-center;
+  }
+  /* ... */
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;

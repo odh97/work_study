@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
-import { useExpertStore } from "@/app/_store/Zustand";
+import { useExpertStore } from "@/app/_store/store";
 
 export default function MyMap() {
   const { state, infoAdd } = useExpertStore();

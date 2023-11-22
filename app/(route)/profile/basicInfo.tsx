@@ -1,7 +1,7 @@
 "use client";
 import React, { FormEvent, useState } from "react";
 import axios from "axios";
-import { useExpertStore } from "@/app/_store/Zustand";
+import { useExpertStore } from "@/app/_store/store";
 type addressesObj = {
   address: string;
   roadAddress: string;
@@ -126,7 +126,7 @@ export function AddressInfo() {
   const [addressList, setAddressList] = useState<null | addressesObj[]>(null);
   async function handlerAddressLookup() {
     const axiosData = await axios.get(
-      "http://localhost:3000/api/naverAPI?query=" + addressLookup,
+      "http://localhost:3000/API/naverAPI?query=" + addressLookup,
     );
     const axiosDataJson = axiosData.data.message;
     console.log(axiosDataJson.addresses);

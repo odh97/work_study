@@ -1,27 +1,8 @@
 import { create } from "zustand";
 import axios from "axios";
 import { devtools } from "zustand/middleware";
-export type ExpertStoreType = {
-  state: {
-    id: number | null;
-    name: string;
-    phone: number | null;
-    gender: string;
-    portfolio: File | null;
-    field: string;
-    week_work: (string | null)[] | null;
-    addressObj: {
-      address: string;
-      roadAddress: string;
-      detailAddress: string;
-      mapX: number | null;
-      mapY: number | null;
-    };
-  };
-  getInfo: () => void;
-  setInfo: (actionPayload: boolean) => void;
-  infoAdd: (actionPayload: any) => void;
-};
+import { ExpertStoreType } from "./storeCreateType";
+
 export const useExpertStore = create<ExpertStoreType>()(
   devtools((set) => ({
     state: {

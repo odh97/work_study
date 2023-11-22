@@ -4,7 +4,7 @@ import type { NextRequest } from "next/server";
 // This function can be marked `async` if using `await` inside
 export function middleware(request: NextRequest) {
   // API 요청 처리
-  if (request.nextUrl.pathname.startsWith("/_API")) {
+  if (request.nextUrl.pathname.startsWith("/API")) {
     console.log("API 요청");
     return NextResponse.next();
   }
@@ -16,5 +16,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/read/:path*", "/_API/:path*"],
+  matcher: ["/read/:path*", "/API/:path*"],
 };
