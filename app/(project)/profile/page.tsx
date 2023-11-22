@@ -1,5 +1,4 @@
-import { BasicInfo, PersonalInfo } from "@/app/project/profile/basicInfo";
-import MyMap from "@/app/project/profile/MyMap";
+import { BasicInfo, AddressInfo } from "@/app/(project)/profile/basicInfo";
 
 export default function Profile() {
   return (
@@ -18,8 +17,10 @@ export default function Profile() {
         <li className={"w-1/3 bg-amber-300 text-center text-xl"}>학력사항</li>
       </ul>
       <BasicInfo />
-      <PersonalInfo />
-      <MyMap />
+      <AddressInfo />
+      <button className={"mt-3 rounded-xl bg-sky-500 px-10 py-5 text-white"}>
+        전문가 설정 완료
+      </button>
     </div>
   );
 }

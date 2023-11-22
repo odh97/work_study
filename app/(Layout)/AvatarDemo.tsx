@@ -26,7 +26,7 @@ const AvatarDemo = () => (
       </Avatar.Fallback>
     </Avatar.Root>
     <Avatar.Root className="AvatarRoot">
-      <Avatar.Fallback className="AvatarFallback">PD</Avatar.Fallback>
+      <Avatar.Fallback className="AvatarFallback">User</Avatar.Fallback>
     </Avatar.Root>
   </div>
 );

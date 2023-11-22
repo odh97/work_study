@@ -1,3 +1,5 @@
-export default function Search() {
-  return <div>안녕하세요</div>;
+import { NextResponse } from "next/server";
+
+export async function GET() {
+  return NextResponse.json({ message: "Hello World search" });
 }

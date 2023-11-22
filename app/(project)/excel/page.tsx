@@ -1,3 +1,17 @@
-export default function Excel() {
-  return <div>안녕하세요~~~</div>;
+"use client";
+import React from "react";
+import ExcelComponent from "./excelDownload";
+import CsvDownload from "./csvDownload";
+import TestComponent from "./testComponent";
+
+function DataDownload() {
+  return (
+    <>
+      <CsvDownload />
+      <ExcelComponent />
+      <TestComponent />
+    </>
+  );
 }
+
+export default DataDownload;

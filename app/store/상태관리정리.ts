@@ -1,3 +1,7 @@
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
+import axios from "axios";
+
 //사용법 정리
 interface StoreType {
   name: string;
