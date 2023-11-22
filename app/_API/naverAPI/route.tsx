@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import axios from "axios";
 
 export async function GET(request: NextRequest) {
-  console.log("route in, naver api protocol");
+  console.log("route in, naver API protocol");
   const addressLookupQuery = request.nextUrl.searchParams.get("query");
 
   try {

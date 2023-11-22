@@ -1,6 +1,6 @@
 import Image from "next/image";
 import style from "./TopicPage.module.css";
-import { UnsplashImage } from "@/app/models/unsplash-image";
+import { UnsplashImage } from "@/app/_types/unsplash-image";
 import { Metadata } from "next";
 import { param } from "ts-interface-checker";
 

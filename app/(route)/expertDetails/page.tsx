@@ -1,4 +1,4 @@
-import MyMap from "@/app/(project)/expertDetails/MyMap";
+import MyMap from "@/app/(route)/expertDetails/MyMap";
 
 export default function ExpertDetails() {
   return (

@@ -1,5 +1,5 @@
-import PopoverDemo from "./(Layout)/Button";
-import AvatarDemo from "@/app/(Layout)/AvatarDemo";
+import PopoverDemo from "@/app/_component/Button";
+import AvatarDemo from "@/app/_component/AvatarDemo";
 
 export default function Home() {
   return (

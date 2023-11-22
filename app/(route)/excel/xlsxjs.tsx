@@ -2,29 +2,13 @@
 
 import React from "react";
 import XLSX from "xlsx-js-style";
-import logo from "./../../../public/the-solve.svg";
 
 export default function Xlsxjs() {
   // STEP 1: 새로운 workbook을 만든다
   const wb = XLSX.utils.book_new();
 
-  // 이미지 크기 및 위치 지정
-  const image = {
-    "!type": "image",
-    "!pos": {
-      start: { col: 2, row: 2 },
-      end: { col: 3, row: 3 },
-    },
-    "!url": logo,
-    "!offset": { x: 5, y: 5 },
-  };
-
   // STEP 2: 데이터 rows에 대한 value와 style을 지정해준다.
   let header = [
-    {
-      v: image,
-    },
-
     {
       v: "날짜",
       t: "s",

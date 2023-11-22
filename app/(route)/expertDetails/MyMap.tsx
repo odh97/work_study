@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
-import { useExpertStore } from "@/app/store/Zustand";
+import { useExpertStore } from "@/app/_store/Zustand";
 
 export default function MyMap() {
   const { state, infoAdd } = useExpertStore();
@@ -9,7 +9,7 @@ export default function MyMap() {
   // 구글 지도
   const mapRef = useRef<HTMLDivElement>(null);
   const initMap = async () => {
-    // google maps api load
+    // google maps API load
     const loader = new Loader({
       apiKey: process.env.GOOGLE_MAPS_API_KEY as string,
       version: "weekly",

@@ -1,4 +1,4 @@
-import { BasicInfo, AddressInfo } from "@/app/(project)/profile/basicInfo";
+import { BasicInfo, AddressInfo } from "@/app/(route)/profile/basicInfo";
 
 export default function Profile() {
   return (
