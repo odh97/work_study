@@ -3,7 +3,7 @@
 import React from "react";
 import { CSVLink } from "react-csv";
 
-import ExcelComponent from "./excelDownload";
+import ExcelComponent from "./xlsxjs";
 
 export default function CsvDownload() {
   const headers = [

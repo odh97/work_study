@@ -4,7 +4,7 @@ import React from "react";
 import XLSX from "xlsx-js-style";
 import logo from "./../../../public/the-solve.svg";
 
-export default function ExcelComponent() {
+export default function Xlsxjs() {
   // STEP 1: 새로운 workbook을 만든다
   const wb = XLSX.utils.book_new();
 

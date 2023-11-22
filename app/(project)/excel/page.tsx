@@ -1,15 +1,15 @@
 "use client";
 import React from "react";
-import ExcelComponent from "./excelDownload";
+import Xlsxjs from "./xlsxjs";
 import CsvDownload from "./csvDownload";
-import TestComponent from "./testComponent";
+import Exceljs from "./exceljs";
 
 function DataDownload() {
   return (
     <>
       <CsvDownload />
-      <ExcelComponent />
-      <TestComponent />
+      <Xlsxjs />
+      <Exceljs />
     </>
   );
 }
