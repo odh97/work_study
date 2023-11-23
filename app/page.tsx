@@ -4,7 +4,7 @@ import AvatarDemo from "@/app/_component/ui/AvatarDemo";
 export default function Home() {
   return (
     <>
-      <h1>메인페이지입니다. test</h1>
+      <h1>메인페이지입니다. test test</h1>
       <PopoverDemo />
       <AvatarDemo />
     </>
