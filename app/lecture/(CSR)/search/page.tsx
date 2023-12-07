@@ -1,4 +1,4 @@
-import SearchPage from "@/app/(CSR)/search/SearchPage";
+import SearchPage from "@/app/lecture/(CSR)/search/SearchPage";
 
 export const metadata = {
   title: "Search CSR - next js",

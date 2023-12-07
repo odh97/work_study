@@ -23,7 +23,7 @@ export default function RootLayout({
         <header className={"bg-blue text-center"}>
           <div
             className={
-              "mx-auto flex h-[50px] w-[95%] items-center justify-between"
+              "mx-auto flex h-[80px] w-[95%] items-center justify-between"
             }
           >
             <h1 className={"inline-block w-[150px]"}>
