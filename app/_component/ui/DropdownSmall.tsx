@@ -1,8 +1,8 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/app/lib/utills";
 import React, { forwardRef, useState } from "react";
-import CloseSvg from "@/assets/svg/closeSvg";
+import { IconClose } from "@/app/assets/svg/svgList";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 
 interface ButtonPropsType {
@@ -45,7 +45,7 @@ function DropdownSmall(
           ref={ref}
           disabled={disabled}
           className={cn(
-            "body-6 flex items-center justify-center rounded-[9999px] px-[16px] pb-[6px] pt-[8px] hover:bg-secondary-green disabled:opacity-20",
+            "body-6 hover:bg-secondary-green flex items-center justify-center rounded-[9999px] px-[16px] pb-[6px] pt-[8px] disabled:opacity-20",
             "bg-primary text-grayscale-white focus:outline-0",
             className,
           )}
@@ -58,13 +58,13 @@ function DropdownSmall(
                 : "mb-[3px] ml-[3px] select-none transition-all duration-300"
             }
           >
-            <CloseSvg />
+            <IconClose />
           </div>
         </DropdownMenu.Trigger>
         <DropdownMenu.Portal>
           <DropdownMenu.Content
             className={cn(
-              "mt-[5px] overflow-y-hidden rounded-[10px] bg-grayscale-white text-center shadow-2xl",
+              "bg-grayscale-white mt-[5px] overflow-y-hidden rounded-[10px] text-center shadow-2xl",
               "animate-[slideDownAndFade_0.6s_ease-in-out]",
             )}
           >
@@ -74,7 +74,7 @@ function DropdownSmall(
                     <DropdownMenu.Item
                       key={index}
                       className={
-                        "body-6 cursor-pointer px-[20px] py-2 hover:bg-primary-light hover:text-grayscale-white hover:outline-0"
+                        "body-6 hover:bg-primary-light hover:text-grayscale-white cursor-pointer px-[20px] py-2 hover:outline-0"
                       }
                     >
                       <p onClick={onClick}>{children}</p>

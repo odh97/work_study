@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/app/lib/utills";
 import React, { forwardRef } from "react";
 
 interface ButtonPropsType {
@@ -37,7 +37,7 @@ function ButtonSmallState(
         onClick={onClick}
         data-state={buttonState}
         className={cn(
-          "emphasis-5 block rounded-[6px] border border-grayscale-neutral px-[18px] pb-[6px] pt-[8px]",
+          "emphasis-5 border-grayscale-neutral block rounded-[6px] border px-[18px] pb-[6px] pt-[8px]",
           "data-[state=pending]:pointer-events-none data-[state=pending]:cursor-default",
           "data-[state=fulfilled]:border-secondary-green data-[state=fulfilled]:text-secondary-green",
           "data-[state=rejected]:pointer-events-none data-[state=rejected]:opacity-20",

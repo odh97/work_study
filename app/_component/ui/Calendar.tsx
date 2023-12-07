@@ -13,7 +13,7 @@ import {
 import { ko } from "date-fns/locale";
 import "react-day-picker/dist/style.css";
 import "../../app/uiguide/daypicker.css";
-import { cn } from "@/lib/utils";
+import { cn } from "@/app/lib/utills";
 import Image from "next/image";
 
 /**
@@ -84,6 +84,8 @@ export default function Calendar({
       >
         {multiple ? (
           <DayPicker
+            // lang
+            locale={ko}
             // style
             style={{
               pointerEvents: calendarToggle ? "auto" : "none",
@@ -147,6 +149,8 @@ export default function Calendar({
         ) : (
           //   단일 날짜 선택
           <DayPicker
+            // lang
+            locale={ko}
             // style
             style={{
               pointerEvents: calendarToggle ? "auto" : "none",
@@ -235,7 +239,7 @@ function footer({ today, month, setMonth }: footerPropsType) {
   return (
     <button
       className={
-        "hover:bg-blue-700 rounded mt-5 w-full bg-primary px-4 py-2 font-bold text-grayscale-white"
+        "bg-primary text-grayscale-white mt-5 w-full rounded px-4 py-2 font-bold hover:bg-blue-700"
       }
       disabled={isSameMonth(today, month)}
       onClick={() => setMonth(today)}

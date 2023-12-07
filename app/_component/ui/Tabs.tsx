@@ -1,8 +1,8 @@
 "use client";
 
 import React, { forwardRef } from "react";
-import { cn } from "@/lib/utils";
 import * as Tabs from "@radix-ui/react-tabs";
+import { cn } from "@/app/lib/utills";
 
 interface radioBoxType {
   id?: string;
@@ -55,9 +55,9 @@ function RadioBox(
                       data-secondary={secondary}
                       className={cn(
                         "TabsTrigger",
-                        "box-border h-[36px] flex-1 overflow-hidden border-b-2 border-t-2 border-b-grayscale-dark border-t-grayscale-white text-grayscale-neutral transition-all duration-500 hover:border-secondary-green  hover:border-t-grayscale-white hover:text-secondary-green",
-                        "aria-selected:emphasis-4 aria-selected:border-2 aria-selected:border-grayscale-dark aria-selected:border-b-grayscale-white aria-selected:text-grayscale-dark",
-                        "data-[secondary=true]:aria-selected:body-4 group data-[secondary=true]:relative data-[secondary=true]:border-0 data-[secondary=true]:aria-selected:text-primary",
+                        "border-b-grayscale-dark border-t-grayscale-white text-grayscale-neutral hover:border-secondary-green hover:border-t-grayscale-white hover:text-secondary-green box-border h-[36px] flex-1 overflow-hidden border-b-2 border-t-2  transition-all duration-500",
+                        "aria-selected:emphasis-4 aria-selected:border-grayscale-dark aria-selected:border-b-grayscale-white aria-selected:text-grayscale-dark aria-selected:border-2",
+                        "data-[secondary=true]:aria-selected:body-4 data-[secondary=true]:aria-selected:text-primary group data-[secondary=true]:relative data-[secondary=true]:border-0",
                       )}
                       value={title}
                       key={title}
@@ -68,8 +68,8 @@ function RadioBox(
                         <span
                           className={cn(
                             "ease absolute bottom-0 left-[50%] h-[2px] w-[0%] transition-all duration-500",
-                            "group-hover:left-0 group-hover:w-[100%] group-hover:bg-secondary-green",
-                            "group-aria-selected:left-0 group-aria-selected:w-[100%] group-aria-selected:bg-primary-light",
+                            "group-hover:bg-secondary-green group-hover:left-0 group-hover:w-[100%]",
+                            "group-aria-selected:bg-primary-light group-aria-selected:left-0 group-aria-selected:w-[100%]",
                           )}
                         ></span>
                       ) : null}

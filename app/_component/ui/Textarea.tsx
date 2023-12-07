@@ -1,8 +1,8 @@
 "use client";
 
 import React, { forwardRef } from "react";
+import { cn } from "@/app/lib/utills";
 import * as Label from "@radix-ui/react-label";
-import { cn } from "@/lib/utils";
 import { animated, config, useSpring } from "@react-spring/web";
 
 /**
@@ -112,7 +112,7 @@ function Textarea(
         />
       </animated.div>
       {errorToggle ? (
-        <p className={"body-7 ml-[15px] mt-[5px] text-secondary-red"}>
+        <p className={"body-7 text-secondary-red ml-[15px] mt-[5px]"}>
           {errorText ? errorText : "값을 입력해 주세요."}
         </p>
       ) : null}

@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/app/lib/utills";
 import React, { forwardRef } from "react";
 import DownDarkSvg from "../../assets/svg/downSvg";
 
@@ -35,7 +35,7 @@ function Hashtag(
       ref={ref}
       data-disabled={disabled}
       className={cn(
-        "emphasis-5 box-border flex w-fit items-center rounded-[9999px] border border-grayscale-neutral px-[13px] pb-[6px] pt-[8px]",
+        "emphasis-5 border-grayscale-neutral box-border flex w-fit items-center rounded-[9999px] border px-[13px] pb-[6px] pt-[8px]",
         "hover:border-secondary-green hover:text-secondary-green focus:border-secondary-green focus:text-secondary-green",
         "data-[disabled:true]:pointer-events-none data-[disabled:true]:opacity-20",
         className,
@@ -46,7 +46,7 @@ function Hashtag(
         <div
           onClick={onClick}
           className={
-            "fill-current fill-current ml-[5px]  translate-y-[-1px] cursor-pointer hover:text-secondary-green"
+            "hover:text-secondary-green ml-[5px] translate-y-[-1px]  cursor-pointer fill-current fill-current"
           }
         >
           <DownDarkSvg />

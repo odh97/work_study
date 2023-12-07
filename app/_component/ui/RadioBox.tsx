@@ -1,7 +1,7 @@
 "use client";
 
 import React, { forwardRef } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/app/lib/utills";
 import * as RadioGroup from "@radix-ui/react-radio-group";
 
 interface radioBoxType {
@@ -77,7 +77,7 @@ function RadioBox(
                     >
                       <div
                         className={cn(
-                          "relative h-[26px] w-[26px] rounded-[9999px] border border-grayscale-neutral bg-grayscale-white group-hover:border-secondary-green ",
+                          "border-grayscale-neutral bg-grayscale-white group-hover:border-secondary-green relative h-[26px] w-[26px] rounded-[9999px] border ",
                           "group-data-[state=checked]:bg-secondary-green group-data-[state=checked]:text-grayscale-white",
                           "group-data-[state=checked]:hover:bg-secondary-green group-data-[state=checked]:hover:text-grayscale-white group-data-[state=checked]:focus:bg-secondary-green group-data-[state=checked]:focus:text-grayscale-white",
                           "group-data-[state=checked]:transition-all group-data-[state=checked]:duration-700",
@@ -85,7 +85,7 @@ function RadioBox(
                       >
                         <span
                           className={cn(
-                            "absolute left-[6px] top-[6px] h-[12px] w-[12px] rounded-[9999px] bg-grayscale-neutral group-hover:bg-secondary-green",
+                            "bg-grayscale-neutral group-hover:bg-secondary-green absolute left-[6px] top-[6px] h-[12px] w-[12px] rounded-[9999px]",
                             "group-data-[state=checked]:bg-grayscale-white",
                             "group-data-[state=checked]:transition-all group-data-[state=checked]:duration-700",
                           )}
@@ -95,7 +95,7 @@ function RadioBox(
                     <label
                       className={cn(
                         "Label",
-                        "body-4 ml-[10px] cursor-pointer text-grayscale-dark",
+                        "body-4 text-grayscale-dark ml-[10px] cursor-pointer",
                       )}
                       htmlFor={id}
                     >

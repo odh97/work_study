@@ -159,9 +159,7 @@ export function AddressInfo() {
         <input
           type="text"
           value={addressLookup}
-          onChange={(e) => {
-            setAddressLookup(e.target.value);
-          }}
+          onChange={(e) => setAddressLookup(e.target.value)}
         />
         <button
           className={"mt-3 rounded-xl bg-amber-300 px-10 py-5"}

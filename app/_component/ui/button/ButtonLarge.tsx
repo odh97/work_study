@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/app/lib/utills";
 import React, { forwardRef } from "react";
 
 interface ButtonPropsType {
@@ -38,9 +38,9 @@ function ButtonLargeCp(
       disabled={disabled}
       data-second={secondary}
       className={cn(
-        "body-3 h-[45px] w-full rounded-[9999px] bg-primary text-grayscale-weak md:max-w-[328px] ",
+        "body-3 bg-primary text-grayscale-weak h-[45px] w-full rounded-[9999px] md:max-w-[328px] ",
         " hover:bg-secondary-green focus:bg-secondary-green disabled:opacity-20",
-        "data-[second=true]:border data-[second=true]:border-primary data-[second=true]:bg-transparent data-[second=true]:text-primary  data-[second=true]:hover:border-secondary-green data-[second=true]:hover:text-secondary-green data-[second=true]:focus:border-secondary-green data-[second=true]:focus:text-secondary-green",
+        "data-[second=true]:border-primary data-[second=true]:text-primary data-[second=true]:hover:border-secondary-green data-[second=true]:hover:text-secondary-green  data-[second=true]:focus:border-secondary-green data-[second=true]:focus:text-secondary-green data-[second=true]:border data-[second=true]:bg-transparent",
         className,
       )}
     >
