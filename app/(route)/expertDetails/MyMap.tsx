@@ -1,11 +1,8 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
-import { useExpertStore } from "@/app/_store/store";
 
 export default function MyMap() {
-  const { state, infoAdd } = useExpertStore();
-
   // 구글 지도
   const mapRef = useRef<HTMLDivElement>(null);
   const initMap = async () => {
@@ -92,7 +89,6 @@ export default function MyMap() {
   };
 
   useEffect(() => {
-    initMap();
     initMap2();
   }, []);
 

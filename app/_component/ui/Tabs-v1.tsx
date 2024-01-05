@@ -5,19 +5,19 @@ import { cn } from "@/lib/utils";
 import * as RadixTabs from "@radix-ui/react-tabs";
 import { useSpring } from "@react-spring/web";
 import { useGesture } from "@use-gesture/react";
+import useParamsToUrl from "@/hook/useParamsToUrl";
+import { useSearchParams } from "next/navigation";
 
 interface TabsProps {
+  t?: any;
   children?: React.ReactNode;
   className?: string;
   wrapperClassName?: string;
-  list?: string[];
-  value: string;
-  setValue: React.Dispatch<React.SetStateAction<string>>;
-  defaultValue?: string;
+  ParamKey: string;
+  list: string[];
   selectedClass?: string;
   unSelectedClass?: string;
   reverse?: boolean;
-  t?: any;
 }
 interface TabsContentProps {
   value: string;
@@ -29,17 +29,31 @@ function Tabs({
   children,
   className,
   wrapperClassName,
-  value,
-  setValue,
+  ParamKey,
   list,
   selectedClass,
   unSelectedClass,
   reverse = false,
 }: TabsProps) {
+  // 만약 onMount 됬을 때 value가 없으면 첫번째 value를 넣어준다.
+  const { setKeyAndValue } = useParamsToUrl();
+  const params = useSearchParams();
+  const paramsValue = params.get(ParamKey);
+
+  const [value, setValue] = React.useState<string>("");
+
+  useEffect(() => {
+    if (!!paramsValue) {
+      setValue(paramsValue);
+    } else {
+      setValue(list[0]);
+    }
+  }, [paramsValue]);
+
   function generateTriggerClass(key: string) {
     if (reverse) return reverseClass(key);
 
-    const defaultClass = cn("TabsTrigger h-[36px] flex-1 select-none");
+    const defaultClass = cn("TabsTrigger h-[36px] sm:flex-1 select-none");
     const selected = cn(
       "h-[48px] text-grayscale-dark border-b-2 emphasis-2",
       selectedClass,
@@ -54,7 +68,7 @@ function Tabs({
   }
 
   function reverseClass(key: string) {
-    const defaultClass = cn("TabsTrigger h-[36px] flex-1 select-none");
+    const defaultClass = cn("TabsTrigger h-[36px] sm:flex-1 select-none");
     const selected = cn(
       "h-[48px] text-grayscale-dark border-t-2 border-r-2 border-l-2 emphasis-2",
       selectedClass,
@@ -74,7 +88,11 @@ function Tabs({
         "TabsRoot flex w-full flex-col justify-center sm:block sm:w-auto",
         wrapperClassName,
       )}
-      defaultValue={value}
+      value={value}
+      onValueChange={(value) => {
+        setValue(value);
+        setKeyAndValue(ParamKey, value);
+      }}
     >
       <RadixTabs.List
         className={cn("TabsList body-5 flex", className)}
@@ -87,7 +105,6 @@ function Tabs({
                 value={title}
                 key={title}
                 className={generateTriggerClass(title)}
-                onClick={() => setValue(title)}
               >
                 {t ? t(title) : title}
               </RadixTabs.Trigger>

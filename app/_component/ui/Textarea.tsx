@@ -1,9 +1,28 @@
 "use client";
 
 import React, { forwardRef } from "react";
-import { cn } from "@/app/lib/utills";
 import * as Label from "@radix-ui/react-label";
+import { cn } from "@/lib/utils";
 import { animated, config, useSpring } from "@react-spring/web";
+
+interface TextareaType {
+  // default props
+  id?: string;
+  divClassName?: string;
+  labelClassName?: string;
+  inputClassName?: string;
+  disabled?: boolean;
+  setInputValue?: React.Dispatch<React.SetStateAction<string>>;
+
+  // label
+  labelToggle?: boolean;
+  labelText?: string;
+  // error
+  errorToggle?: boolean;
+  setErrorToggle?: React.Dispatch<React.SetStateAction<boolean>>;
+  errorText?: string;
+  placeholder?: string;
+}
 
 /**
  *   기본 옵션
@@ -39,6 +58,7 @@ function Textarea(
     errorToggle = false,
     setErrorToggle,
     errorText,
+    placeholder,
   }: TextareaType,
   ref: React.Ref<HTMLDivElement>,
 ) {
@@ -65,15 +85,6 @@ function Textarea(
 
   return (
     <div ref={ref} className={cn(divClassName)}>
-      <style jsx>{`
-        textarea {
-          scrollbar-width: none;
-          -ms-overflow-style: none;
-        }
-        textarea::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
       {labelToggle ? (
         <Label.Root
           className={cn(
@@ -98,10 +109,12 @@ function Textarea(
         <textarea
           className={cn(
             "Input",
-            "body-4 min-h-[62px] w-full resize-none outline-none",
+            "body-4 h-full min-h-[62px] w-full resize-none outline-none",
           )}
           id={id}
-          placeholder={"단어나 문장을 입력해 주세요."}
+          placeholder={
+            placeholder ? placeholder : "단어나 문장을 입력해 주세요."
+          }
           disabled={disabled}
           onChange={(e) => {
             if (errorToggle === true && setErrorToggle !== undefined) {
@@ -112,7 +125,7 @@ function Textarea(
         />
       </animated.div>
       {errorToggle ? (
-        <p className={"body-7 text-secondary-red ml-[15px] mt-[5px]"}>
+        <p className={"body-7 ml-[15px] mt-[5px] text-left text-secondary-red"}>
           {errorText ? errorText : "값을 입력해 주세요."}
         </p>
       ) : null}
@@ -121,21 +134,3 @@ function Textarea(
 }
 
 export default forwardRef(Textarea);
-
-interface TextareaType {
-  // default props
-  id?: string;
-  divClassName?: string;
-  labelClassName?: string;
-  inputClassName?: string;
-  disabled?: boolean;
-  setInputValue?: React.Dispatch<React.SetStateAction<string>>;
-
-  // label
-  labelToggle?: boolean;
-  labelText?: string;
-  // error
-  errorToggle?: boolean;
-  setErrorToggle?: React.Dispatch<React.SetStateAction<boolean>>;
-  errorText?: string;
-}

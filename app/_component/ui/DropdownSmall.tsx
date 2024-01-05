@@ -1,19 +1,16 @@
 "use client";
 
-import { cn } from "@/app/lib/utills";
+import { cn } from "@/lib/utils";
 import React, { forwardRef, useState } from "react";
-import { IconClose } from "@/app/assets/svg/svgList";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import { IconDown } from "@/assets/svg/dynamic/svgList";
 
 interface ButtonPropsType {
-  title?: string;
-  list?: {
-    children: React.ReactNode;
-    onClick: () => void;
-  }[];
   ref?: React.Ref<HTMLButtonElement>;
+  title?: string;
+  setTitle?: React.Dispatch<React.SetStateAction<string>>;
+  list?: string[];
   className?: string;
-  children?: React.ReactNode;
   disabled?: boolean;
 }
 
@@ -21,6 +18,7 @@ interface ButtonPropsType {
  * button<br/>
  * ref = {ref 정의}<br/>
  * title = {title 정의}<br/>
+ * setTitle = {setTitle 정의}<br/>
  * list = {list array 정의}<br/>
  * className = {스타일 정의}<br/>
  * disabled = {true}<br/>
@@ -32,6 +30,7 @@ function DropdownSmall(
     className,
     disabled = false,
     title = "이름이 없습니다.",
+    setTitle,
     list,
   }: ButtonPropsType,
   ref: React.Ref<HTMLButtonElement>,
@@ -45,12 +44,13 @@ function DropdownSmall(
           ref={ref}
           disabled={disabled}
           className={cn(
-            "body-6 hover:bg-secondary-green flex items-center justify-center rounded-[9999px] px-[16px] pb-[6px] pt-[8px] disabled:opacity-20",
+            "body-6 flex max-h-[31px] items-center justify-center rounded-[9999px] px-[16px] pb-[6px] pt-[8px] hover:bg-secondary-green",
             "bg-primary text-grayscale-white focus:outline-0",
+            "disabled:pointer-events-none disabled:opacity-20",
             className,
           )}
         >
-          {title}
+          <p className={"min-w-max"}>{title}</p>
           <div
             className={
               imgAni
@@ -58,26 +58,27 @@ function DropdownSmall(
                 : "mb-[3px] ml-[3px] select-none transition-all duration-300"
             }
           >
-            <IconClose />
+            <IconDown />
           </div>
         </DropdownMenu.Trigger>
         <DropdownMenu.Portal>
           <DropdownMenu.Content
             className={cn(
-              "bg-grayscale-white mt-[5px] overflow-y-hidden rounded-[10px] text-center shadow-2xl",
+              "mt-[5px] overflow-y-hidden rounded-[10px] bg-grayscale-white text-center shadow-card",
               "animate-[slideDownAndFade_0.6s_ease-in-out]",
             )}
           >
             {list !== undefined
-              ? list.map(({ children, onClick }, index) => {
+              ? list.map((value, index) => {
                   return (
                     <DropdownMenu.Item
                       key={index}
                       className={
-                        "body-6 hover:bg-primary-light hover:text-grayscale-white cursor-pointer px-[20px] py-2 hover:outline-0"
+                        "body-6 cursor-pointer px-[20px] py-2 hover:bg-primary-light hover:text-grayscale-white hover:outline-0"
                       }
+                      onClick={() => (setTitle ? setTitle(value) : null)}
                     >
-                      <p onClick={onClick}>{children}</p>
+                      <p>{value}</p>
                     </DropdownMenu.Item>
                   );
                 })

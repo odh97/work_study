@@ -1,6 +1,6 @@
-import { cn } from "@/app/lib/utills";
+import { cn } from "@/lib/utils";
 import React, { forwardRef } from "react";
-import DownDarkSvg from "../../assets/svg/downSvg";
+import DownDarkSvg from "../../assets/svg/dynamic/IconClose";
 
 interface hashtagPropsType {
   className?: string;
@@ -33,20 +33,20 @@ function Hashtag(
   return (
     <div
       ref={ref}
+      onClick={onClick}
       data-disabled={disabled}
       className={cn(
-        "emphasis-5 border-grayscale-neutral box-border flex w-fit items-center rounded-[9999px] border px-[13px] pb-[6px] pt-[8px]",
+        "emphasis-5 box-border flex max-h-[29px] w-fit items-center rounded-[9999px] border border-grayscale-neutral px-[13px] pb-[6px] pt-[8px]",
         "hover:border-secondary-green hover:text-secondary-green focus:border-secondary-green focus:text-secondary-green",
-        "data-[disabled:true]:pointer-events-none data-[disabled:true]:opacity-20",
+        "cursor-pointer select-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-20",
         className,
       )}
     >
-      <p>{children}</p>
+      <div className={"min-w-max"}>{children}</div>
       {deleteIcon ? (
         <div
-          onClick={onClick}
           className={
-            "hover:text-secondary-green ml-[5px] translate-y-[-1px]  cursor-pointer fill-current fill-current"
+            "fill-current fill-current ml-[5px] translate-y-[-1px] cursor-pointer hover:text-secondary-green"
           }
         >
           <DownDarkSvg />

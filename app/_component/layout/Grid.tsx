@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import { cn } from "@/app/lib/utills";
+import { cn } from "@/lib/utils";
 
 type Props = {
   children?: React.ReactNode | React.ReactNode[];

@@ -17,7 +17,7 @@
 
 @layer components {
   .card {
-    @apply bg-amber-400 w-[150px] rounded-lg py-3 text-center;
+    @apply bg-primary w-[150px] rounded-lg py-3 text-center;
   }
 }
 

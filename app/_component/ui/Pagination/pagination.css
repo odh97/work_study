@@ -1,0 +1,27 @@
+#next {
+    color:hsla(240, 4%, 31%, 1);
+    background-color: transparent;
+}
+
+#next:hover {
+    background-color: hsla(178, 100%, 38%, 1);
+    color:hsla(0, 0%, 100%, 1);
+}
+#next:disabled{
+    color: hsla(240, 12%, 89%, 1);
+    background-color: transparent;
+}
+
+#prev {
+    color: hsla(240, 4%, 31%, 1);
+    background-color: transparent;
+}
+
+#prev:hover {
+    background-color: hsla(178, 100%, 38%, 1);
+    color:hsla(0, 0%, 100%, 1);
+}
+#prev:disabled{
+    color: hsla(240, 12%, 89%, 1);
+    background-color: transparent;
+}

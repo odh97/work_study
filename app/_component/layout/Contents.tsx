@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import { cn } from "@/app/lib/utills";
+import { cn } from "@/lib/utils";
 
 type Props = {
   children?: React.ReactNode | React.ReactNode[];
@@ -9,9 +9,9 @@ type Props = {
 const Contents = forwardRef<HTMLDivElement, Props>((props, ref) => {
   const { children, className } = props;
   return (
-    <div ref={ref} className={cn(``, className)}>
+    <section ref={ref} className={cn(``, className)}>
       {children}
-    </div>
+    </section>
   );
 });
 

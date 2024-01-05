@@ -1,4 +1,4 @@
-import { cn } from "@/app/lib/utills";
+import { cn } from "@/lib/utils";
 import React, { forwardRef } from "react";
 
 interface ButtonPropsType {
@@ -37,9 +37,10 @@ function ButtonSmallCp(
       disabled={disabled}
       data-second={secondary}
       className={cn(
-        "body-6 hover:bg-secondary-green focus:bg-secondary-green flex content-center items-center rounded-[9999px] px-[16px] pb-[6px] pt-[8px] disabled:opacity-20",
+        "body-6 flex max-h-[31px] min-w-fit max-w-fit content-center items-center rounded-[9999px] px-[16px] pb-[6px] pt-[8px] hover:bg-secondary-green focus:bg-secondary-green",
         "bg-primary text-grayscale-weak",
-        "data-[second=true]:border-primary data-[second=true]:text-primary data-[second=true]:hover:border-secondary-green data-[second=true]:hover:text-secondary-green data-[second=true]:focus:border-secondary-green data-[second=true]:focus:text-secondary-green data-[second=true]:border data-[second=true]:bg-transparent",
+        "data-[second=true]:border data-[second=true]:border-primary data-[second=true]:bg-transparent data-[second=true]:text-primary data-[second=true]:hover:border-secondary-green data-[second=true]:hover:text-secondary-green data-[second=true]:focus:border-secondary-green data-[second=true]:focus:text-secondary-green",
+        "disabled:pointer-events-none disabled:opacity-20",
         className,
       )}
     >

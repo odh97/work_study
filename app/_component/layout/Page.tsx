@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import { cn } from "@/app/lib/utills";
+import { cn } from "@/lib/utils";
 
 type Props = {
   children?: React.ReactNode | React.ReactNode[];
@@ -9,12 +9,12 @@ type Props = {
 const Page = forwardRef<HTMLDivElement, Props>((props, ref) => {
   const { children, className } = props;
   return (
-    <main
+    <div
       ref={ref}
-      className={cn(`flex min-h-screen flex-col items-center p-3`, className)}
+      className={cn(`relative flex flex-col items-center`, className)}
     >
       {children}
-    </main>
+    </div>
   );
 });
 

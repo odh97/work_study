@@ -1,7 +1,7 @@
 "use client";
 
 import React, { forwardRef } from "react";
-import { cn } from "@/app/lib/utills";
+import { cn } from "@/lib/utils";
 import * as Switch from "@radix-ui/react-switch";
 
 interface radioBoxType {
@@ -47,7 +47,7 @@ function RadioBox(
           htmlFor={id}
           className={cn(
             "Label",
-            "body-4 text-grayscale-dark mr-[10px] cursor-pointer",
+            "body-4 mr-[10px] cursor-pointer text-grayscale-dark",
           )}
         >
           {children}
@@ -57,7 +57,7 @@ function RadioBox(
           data-size={size === "small" ? "small" : "large"}
           className={cn(
             "SwitchRoot",
-            "bg-grayscale-neutral relative h-[26px] w-[50px] cursor-pointer rounded-[9999px] transition-all duration-300",
+            "relative h-[26px] w-[50px] cursor-pointer rounded-[9999px] bg-grayscale-neutral transition-all duration-300",
             "data-[size=small]:h-[16px] data-[size=small]:w-[30px]",
             "data-[state=checked]:bg-secondary-green",
           )}
@@ -65,7 +65,7 @@ function RadioBox(
           <Switch.Thumb
             data-size={size === "small" ? "small" : "large"}
             className={cn(
-              "bg-grayscale-weak absolute left-[3px] top-[3px] h-[20px] w-[20px] rounded-[9999px] transition-all duration-300",
+              "absolute left-[3px] top-[3px] h-[20px] w-[20px] rounded-[9999px] bg-grayscale-weak transition-all duration-300",
               "data-[size=small]:left-[2px] data-[size=small]:top-[2px] data-[size=small]:h-[12px] data-[size=small]:w-[12px]",
               `data-[state=checked]:data-[size=large]:left-[27px] data-[state=checked]:data-[size=small]:left-[16px]`,
             )}
