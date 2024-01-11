@@ -25,26 +25,27 @@ export default function LoginForm() {
 
   async function onSubmit(e: any) {
     e.preventDefault();
-    const isEmailError = !email ? "이메일을 입력해주세요." : "";
-    const isPasswordError = !password ? "비밀번호를 입력해주세요." : "";
+    const isEmailError = !email ? t("error_email_null") : "";
+    const isPasswordError = !password ? t("error_pwd_null") : "";
     setEmailError(isEmailError);
     setPasswordError(isPasswordError);
     await emailLogin(email, password)
       .then(() => {
         const addCase = localStorage.getItem("addCase");
         if (!!addCase) {
-          window.location.href = `${process.env.NEXT_PUBLIC_WEB_URL}/addCase`;
+          window.location.href = `${process.env.NEXT_PUBLIC_WEB_URL}/add-case`;
         } else {
           window.location.href = `${process.env.NEXT_PUBLIC_WEB_URL}`;
         }
       })
-      .catch((e) =>
+      .catch((e) => {
+        console.log(e);
         showToast({
           type: "error",
           title: "로그인 실패",
           description: "이메일 또는 비밀번호가 일치하지 않습니다.",
-        }),
-      );
+        });
+      });
   }
   return (
     <>

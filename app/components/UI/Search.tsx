@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 
 import React from "react";
 import { IconSearch } from "@/assets/svg/dynamic/svgList";
+import { useText } from "@/hook/useText";
 
 type SearchProps = {
   maxWidth?: string;
@@ -25,6 +26,7 @@ export default function Search({
   classNameInput,
   placeholderText,
 }: SearchProps) {
+  const { t } = useText("common");
   const iconColor = classNameInput?.includes("bg-transparent")
     ? { color: "white" }
     : { color: "#3D474F" };
@@ -44,9 +46,7 @@ export default function Search({
             ? "hover:border-grayscale-light focus:border-grayscale-light"
             : "hover:border-grayscale-black focus:border-grayscale-black",
         )}
-        placeholder={
-          placeholderText ? placeholderText : "키워드를 입력해주세요."
-        }
+        placeholder={placeholderText ? placeholderText : t("input_keyword_pla")}
         value={value}
         onChange={(e) => valueHandler(e.target.value)}
       />

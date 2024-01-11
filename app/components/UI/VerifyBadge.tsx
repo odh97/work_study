@@ -1,8 +1,11 @@
+"use client";
 import Row from "@/components/Layout/Row";
 import { cn } from "@/lib/utils";
 import IconCertification from "@/assets/svg/dynamic/certification";
+import { useText } from "@/hook/useText";
 
 export default function VerifyBadge({ className }: { className?: string }) {
+  const { t } = useText("common");
   return (
     <Row
       className={cn(
@@ -11,7 +14,7 @@ export default function VerifyBadge({ className }: { className?: string }) {
       )}
     >
       <IconCertification className={"h-[20px] w-[20px] text-grayscale-black"} />
-      <Row>인증완료</Row>
+      <Row>{t("authorized")}</Row>
     </Row>
   );
 }

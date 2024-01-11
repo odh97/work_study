@@ -156,7 +156,7 @@ export default function RegisterForm() {
           otherIcon={
             <SendMailButton
               value={email}
-              label={t("button_send")}
+              label={t("send")}
               setErrorMessage={setEmailError}
               trigger={timerHandler}
             />

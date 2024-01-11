@@ -1,10 +1,8 @@
 "use client";
 
-import React, { forwardRef, useEffect } from "react";
+import React, { useEffect } from "react";
 import { cn } from "@/lib/utils";
 import * as RadixTabs from "@radix-ui/react-tabs";
-import { useSpring } from "@react-spring/web";
-import { useGesture } from "@use-gesture/react";
 import useParamsToUrl from "@/hook/useParamsToUrl";
 import { useSearchParams } from "next/navigation";
 

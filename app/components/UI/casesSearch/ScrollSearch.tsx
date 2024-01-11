@@ -39,7 +39,7 @@ export default function ScrollSearch() {
           value={value}
           valueHandler={setValue}
           onsubmit={() => {
-            router.push("/casesSearch?search=" + value);
+            router.push("/cases-search?search=" + value);
           }}
         />
       </Row>

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
-import { IconLeft, IconRight } from "../../assets/svg/svgList";
-import calendarIcon from "../../../public/icon/icon-calendar.svg";
+import {
+  IconCalendar,
+  IconLeft,
+  IconRight,
+} from "@/assets/svg/dynamic/svgList";
 
 // dayPicker
 import { format, isSameMonth } from "date-fns";
@@ -10,17 +13,18 @@ import {
   CaptionProps,
   useNavigation,
 } from "react-day-picker";
-import { ko } from "date-fns/locale";
 import "react-day-picker/dist/style.css";
-import "../../app/uiguide/daypicker.css";
-import { cn } from "@/app/lib/utills";
-import Image from "next/image";
+import "./daypicker.css";
+import { cn } from "@/lib/utils";
 
 /**
  *   기본 옵션
  *   className = {스타일 정의}<br/>
  *   disabled = {true}<br/>
  *   size = {"lg"}<br/>
+ *   dateInputClassName = {input className}<br/>
+ *   titleText = {titleText}<br/>
+ *   titleTExtClassName = {titleTExtClassName}<br/>
  *   <br/>
  *   캘린더 옵션<br/>
  *   단일 선택 옵션<br/>
@@ -35,6 +39,9 @@ import Image from "next/image";
 export default function Calendar({
   disabled = false,
   className,
+  dateInputClassName,
+  titleText,
+  titleTExtClassName,
   size = "small",
   multiple = false,
   singleState,
@@ -52,40 +59,48 @@ export default function Calendar({
   // const [month, setMonth] = useState<Date>(nextMonth);
   return (
     <div className={cn("w-full max-w-[328px]", className)}>
-      {/* 범위 날짜 선택 */}
       <div
         className={
           disabled === false
-            ? cn(MainClassName, boxSize)
-            : cn(MainClassName, "pointer-events-none opacity-20")
+            ? cn(MainClassName, boxSize, dateInputClassName)
+            : cn(
+                MainClassName,
+                "pointer-events-none opacity-20",
+                dateInputClassName,
+              )
         }
         onClick={() => setCalendarToggle(!calendarToggle)}
       >
-        {multiple === false ? (
-          <p>{singleState ? format(singleState, "yyyy-MM-dd") : "날짜 선택"}</p>
-        ) : null}
-        {multiple === true ? (
-          <p>
-            {rangeState?.from
-              ? format(rangeState.from, "yyyy-MM-dd")
-              : "날짜 선택"}
-            {rangeState?.to ? format(rangeState.to, " ~ yyyy-MM-dd") : ""}
-          </p>
-        ) : null}
-
-        <Image
-          className={"select-none"}
-          src={calendarIcon}
-          alt={"calendarIcon"}
-        />
+        {titleText && (
+          <p className={cn("pr-[15px]", titleTExtClassName)}>{titleText}</p>
+        )}
+        <div className={"flex-1 overflow-x-hidden pr-[15px]"}>
+          {multiple === false ? (
+            <p>
+              {singleState &&
+                format(
+                  typeof singleState !== "object"
+                    ? new Date(singleState)
+                    : singleState,
+                  "yyyy-MM-dd",
+                )}
+            </p>
+          ) : null}
+          {multiple === true && (
+            <p className={"truncate"}>
+              {rangeState?.from && format(rangeState.from, "yyyy-MM-dd")}
+              {rangeState?.to && format(rangeState.to, " ~ yyyy-MM-dd")}
+            </p>
+          )}
+        </div>
+        <IconCalendar className={"select-none"} />
       </div>
       <div
         className={"relative mx-auto block w-full min-w-[228px] max-w-[328px]"}
       >
         {multiple ? (
+          // 범위 날짜 선택
           <DayPicker
-            // lang
-            locale={ko}
             // style
             style={{
               pointerEvents: calendarToggle ? "auto" : "none",
@@ -147,10 +162,8 @@ export default function Calendar({
             }}
           />
         ) : (
-          //   단일 날짜 선택
+          // 단일 날짜 선택
           <DayPicker
-            // lang
-            locale={ko}
             // style
             style={{
               pointerEvents: calendarToggle ? "auto" : "none",
@@ -239,7 +252,7 @@ function footer({ today, month, setMonth }: footerPropsType) {
   return (
     <button
       className={
-        "bg-primary text-grayscale-white mt-5 w-full rounded px-4 py-2 font-bold hover:bg-blue-700"
+        "hover:bg-blue-700 rounded mt-5 w-full bg-primary px-4 py-2 font-bold text-grayscale-white"
       }
       disabled={isSameMonth(today, month)}
       onClick={() => setMonth(today)}
@@ -252,6 +265,9 @@ function footer({ today, month, setMonth }: footerPropsType) {
 interface DayPickerType {
   className?: string;
   disabled?: boolean;
+  dateInputClassName?: string;
+  titleText?: string;
+  titleTExtClassName?: string;
   size?: "small" | "lg";
   multiple?: boolean;
   singleState?: Date | undefined;

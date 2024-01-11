@@ -17,7 +17,7 @@ export default function AvatarIcon({
     <div className="flex gap-5">
       <Avatar.Root
         className={cn(
-          "inline-flex select-none items-center justify-center overflow-hidden rounded-[9999px] bg-[#0000001A] align-middle",
+          "border-avatar inline-flex select-none items-center justify-center overflow-hidden rounded-[9999px] border bg-[#0000001A] align-middle",
           className,
         )}
       >

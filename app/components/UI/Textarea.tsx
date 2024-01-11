@@ -124,11 +124,11 @@ function Textarea(
           }}
         />
       </animated.div>
-      {errorToggle ? (
+      {errorToggle && (
         <p className={"body-7 ml-[15px] mt-[5px] text-left text-secondary-red"}>
           {errorText ? errorText : "값을 입력해 주세요."}
         </p>
-      ) : null}
+      )}
     </div>
   );
 }

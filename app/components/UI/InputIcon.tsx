@@ -9,6 +9,7 @@ import Row from "@/components/Layout/Row";
 import React, { useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { sendAuthCodeByEmail } from "@/service/authService";
+import { useText } from "@/hook/useText";
 
 function SendMailButton({
   label,
@@ -16,12 +17,13 @@ function SendMailButton({
   setErrorMessage,
   trigger,
 }: {
-  label: "발송" | "인증하기";
+  label: string;
   value: string;
   setErrorMessage: any;
   trigger: any;
 }) {
   const [isLoad, setIsLoad] = React.useState(false);
+  const { t } = useText("account");
   async function sendEmail() {
     try {
       setIsLoad(true);
@@ -49,10 +51,10 @@ function SendMailButton({
       }}
       className={cn(
         "emphasis-5 absolute right-[7px] top-[52%] box-content h-[32px] w-full translate-y-[-50%] rounded-[9999px] bg-primary text-grayscale-white",
-        label === "발송" ? "max-w-[70px]" : "max-w-[80px]",
+        label === t("send") ? "max-w-[70px]" : "max-w-[80px]",
       )}
     >
-      {isLoad ? "발송중" : label}
+      {isLoad ? t("sending") : label}
     </button>
   );
 }

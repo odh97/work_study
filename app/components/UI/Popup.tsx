@@ -19,13 +19,17 @@ import Search from "@/components/UI/Search";
 import Hashtag from "@/components/UI/Hashtag";
 import ButtonLargeCp from "@/components/UI/button/ButtonLarge";
 import useDebounce from "@/hook/useDebounce";
-import { applyTag, findTags } from "@/service/shareService";
+import { applyTag, findTags, reportComment } from "@/service/shareService";
 import {
   ProviderBtn,
   ProviderBtnList,
 } from "@/components/UI/button/ProviderBtn";
 import { useUserStore } from "@/store/userStore";
 import { useText } from "@/hook/useText";
+import Loading from "@/components/UI/Loading";
+import { useMutation } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
+import { useToastStore } from "@/store/toastStore";
 
 declare global {
   interface Window {
@@ -37,6 +41,7 @@ interface PopupType {
   children: React.ReactNode;
   title?: string;
   content?: React.ReactNode;
+  handlerPopup?: string;
   resetSetString?: React.Dispatch<React.SetStateAction<string>>;
   resetSetNumber?: React.Dispatch<React.SetStateAction<number>>;
   resetSetBoolean?: React.Dispatch<React.SetStateAction<boolean>>;
@@ -52,7 +57,7 @@ export default function Popup({
 }: PopupType) {
   const [popupOpen, setPopupOpen] = useState(true);
 
-  function handleResetData() {
+  function handleOpenChange() {
     setPopupOpen(!popupOpen);
     if (!popupOpen) {
       if (resetSetString) {
@@ -69,7 +74,7 @@ export default function Popup({
 
   return (
     <Dialog.Root
-      onOpenChange={handleResetData}
+      onOpenChange={handleOpenChange}
       data-state={popupOpen ? "open" : "closed"}
     >
       <Dialog.Trigger className={className} asChild>
@@ -86,7 +91,7 @@ export default function Popup({
               event.preventDefault();
             }}
             className={
-              "relative w-[90%] rounded-[10px] bg-grayscale-white px-[30px] pb-[30px] pt-[40px] text-center md:w-auto"
+              "relative w-[90%] overflow-hidden rounded-[10px] bg-grayscale-white px-[30px] pb-[30px] pt-[40px] text-center md:w-auto"
             }
           >
             {title && (
@@ -115,6 +120,7 @@ interface ShareContentType {
   summary?: string;
 }
 function ShareContent({ title, summary }: ShareContentType) {
+  const { t } = useText("common");
   useEffect(() => {
     // 카카오 SDK 스크립트 동적 로드
     const script = document.createElement("script");
@@ -161,14 +167,14 @@ function ShareContent({ title, summary }: ShareContentType) {
       className: " mb-[10px] bg-[#FEE500]",
       image: IconKakao,
       alt: "IconKakao",
-      text: "카카오톡으로 공유하기",
+      text: t("share_kakao"),
       event: shareOnKakao,
     },
     {
       className: " mb-[10px] text-grayscale-white bg-[#0062E0]",
       image: IconFaceBook,
       alt: "IconFaceBook",
-      text: "페이스북으로 공유하기",
+      text: t("share_facebook"),
       event: () => {
         const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
           window.location.href,
@@ -180,7 +186,7 @@ function ShareContent({ title, summary }: ShareContentType) {
       className: "text-grayscale-white bg-[#4D4D53]",
       image: IconTwitter,
       alt: "IconTwitter",
-      text: "트위터로 공유하기",
+      text: t("share_twitter"),
       event: () => {
         const shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
           window.location.href,
@@ -214,15 +220,19 @@ function ShareContent({ title, summary }: ShareContentType) {
   );
 }
 interface ReportContentType {
+  reportType: "ScamPostComment" | "ScamDictionaryComment" | "Review";
+  pid: string | number;
   radioValue: string;
   setRadioValue: React.Dispatch<React.SetStateAction<string>>;
-  onClick?: () => void;
 }
 function ReportContent({
-  onClick,
+  reportType,
+  pid,
   radioValue,
   setRadioValue,
 }: ReportContentType) {
+  const { showToast } = useToastStore();
+
   const ReportList = [
     {
       id: "1",
@@ -257,6 +267,34 @@ function ReportContent({
       text: "잘못된 정보",
     },
   ];
+
+  const { mutate } = useMutation({
+    mutationFn: reportComment,
+    onSuccess: (res) => {
+      showToast({
+        title: "신고가 접수되었습니다.",
+        description: res.result,
+        type: "success",
+      });
+    },
+    onError: (err) => {
+      if (err instanceof Error) {
+        return showToast({
+          title: "신고가 접수되지 않았습니다.",
+          description: err.message,
+          type: "error",
+        });
+      }
+      showToast({
+        title: "신고가 접수되지 않았습니다.",
+        description: "This comment was previously reported.",
+        type: "error",
+      });
+    },
+  });
+  function handleReviewReport() {
+    mutate({ msg: radioValue, reportType: reportType, pid: pid.toString() });
+  }
   return (
     <div className={"w-full overflow-hidden md:w-[330px]"}>
       <RadioBox
@@ -266,9 +304,11 @@ function ReportContent({
         radioValue={radioValue}
         setRadioValue={setRadioValue}
       />
-      <ButtonLarge onClick={onClick} disabled={!radioValue}>
-        신고
-      </ButtonLarge>
+      <Dialog.Close asChild>
+        <ButtonLarge onClick={handleReviewReport} disabled={!radioValue}>
+          신고
+        </ButtonLarge>
+      </Dialog.Close>
       <Dialog.Close asChild>
         <button
           className={"IconButton mt-[25px] text-primary"}
@@ -442,6 +482,7 @@ interface ReviewContentType {
   textValue: string;
   setTextValue: React.Dispatch<React.SetStateAction<string>>;
   onClick?: () => void;
+  errorText?: string;
   textareaError: boolean;
   setTextareaError?: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -452,14 +493,23 @@ function ReviewContent({
   textValue,
   setTextValue,
   onClick,
+  errorText,
   textareaError,
   setTextareaError,
 }: ReviewContentType) {
-  // 기본
-  let reviewStar = [1, 2, 3, 4, 5];
+  const reviewStar = [1, 2, 3, 4, 5];
+
+  function handlerReviewStar(star: number, item: number) {
+    if (star === item) {
+      return setStar(0);
+    }
+    setStar(item);
+  }
 
   return (
-    <div className={"w-full items-center overflow-hidden md:w-[540px]"}>
+    <div
+      className={"relative w-full items-center overflow-hidden md:w-[540px]"}
+    >
       <Row className={"justify-center gap-[5px]"}>
         {reviewStar.map((item, index) => {
           return (
@@ -468,32 +518,42 @@ function ReviewContent({
               className={"score cursor-pointer"}
               src={star < item ? IconStarLinear : IconStarSolid}
               alt={"starImg"}
-              onClick={() => {
-                if (star === item) {
-                  return setStar(0);
-                }
-                setStar(item);
-              }}
+              onClick={() => handlerReviewStar(star, item)}
             />
           );
         })}
       </Row>
       <p className={"display-5 mt-[10px] text-grayscale-dark"}>{star}.0</p>
       <Textarea
-        placeholder={expertName + "에 대한 의뢰 후기를 작성해주세요."}
+        placeholder={expertName + "님에 대한 의뢰 후기를 작성해주세요."}
         inputClassName={"mt-[30px] border-[#00000030] h-[300px] md:h-[200px]"}
         setInputValue={setTextValue}
-        errorText={"5자 이상의 후기를 남겨주세요."}
+        errorText={errorText ?? "error"}
         errorToggle={textareaError}
         setErrorToggle={setTextareaError}
       />
-      <ButtonLarge
-        disabled={!textValue}
-        onClick={onClick}
-        className={"mt-[30px]"}
-      >
-        작성하기
-      </ButtonLarge>
+      <div>
+        {textValue.length >= 5 && textValue.length <= 300 ? (
+          <Dialog.Close asChild>
+            <ButtonLarge
+              aria-label="Close"
+              disabled={!textValue}
+              onClick={onClick}
+              className={"mt-[30px]"}
+            >
+              작성하기
+            </ButtonLarge>
+          </Dialog.Close>
+        ) : (
+          <ButtonLarge
+            disabled={!textValue}
+            onClick={onClick}
+            className={"mt-[30px]"}
+          >
+            작성하기
+          </ButtonLarge>
+        )}
+      </div>
     </div>
   );
 }
