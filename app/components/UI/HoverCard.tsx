@@ -1,6 +1,6 @@
 import React from "react";
 import * as HoverCard from "@radix-ui/react-hover-card";
-import { cn } from "@/lib/utils";
+import { cn } from "@/app/lib/utills";
 
 type HoverCardProps = {
   triggerElement: React.ReactNode | React.ReactNode[];
@@ -22,7 +22,7 @@ export default function CustomHoverCard({
       <HoverCard.Portal>
         <HoverCard.Content
           className={cn(
-            "rounded-[6px] bg-grayscale-white shadow-card data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade data-[side=right]:animate-slideLeftAndFade data-[side=top]:animate-slideDownAndFade data-[state=open]:transition-all",
+            "shadow-card rounded-[6px] bg-grayscale-white data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade data-[side=right]:animate-slideLeftAndFade data-[side=top]:animate-slideDownAndFade data-[state=open]:transition-all",
             contentClassName,
           )}
           sideOffset={5}

@@ -1,7 +1,7 @@
 "use client";
 import React, { ComponentProps } from "react";
 import Contents from "@/components/Layout/Contents";
-import { cn } from "@/lib/utils";
+import { cn } from "@/app/lib/utills";
 import Image from "next/image";
 type ButtonProps = {
   className?: string;

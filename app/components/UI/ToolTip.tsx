@@ -1,7 +1,7 @@
 "use client";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import React from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/app/lib/utills";
 type toolTipProps = {
   triggerElement: React.ReactNode | React.ReactNode[];
   contentElement: React.ReactNode | React.ReactNode[];

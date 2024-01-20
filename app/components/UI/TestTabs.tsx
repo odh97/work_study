@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/app/lib/utills";
 import * as RadixTabs from "@radix-ui/react-tabs";
 import { useSpring, animated, useTrail } from "@react-spring/web";
 

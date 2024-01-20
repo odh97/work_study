@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import * as Label from "@radix-ui/react-label";
-import { cn } from "@/lib/utils";
+import { cn } from "@/app/lib/utills";
 
 import Col from "@/components/Layout/Col";
 import Row from "@/components/Layout/Row";

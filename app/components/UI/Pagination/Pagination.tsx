@@ -2,7 +2,7 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useCallback } from "react";
 import "@/components/UI/Pagination/pagination.css";
-import { cn } from "@/lib/utils";
+import { cn } from "@/app/lib/utills";
 import { PAGE_SIZE, PAGINATION } from "@/constant/constant";
 import {
   IconChevronLeft,

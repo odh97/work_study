@@ -2,7 +2,7 @@
 
 import React, { forwardRef } from "react";
 import * as Label from "@radix-ui/react-label";
-import { cn } from "@/lib/utils";
+import { cn } from "@/app/lib/utills";
 import { animated, config, useSpring } from "@react-spring/web";
 
 interface TextareaType {

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { forwardRef } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/app/lib/utills";
 import * as Checkbox from "@radix-ui/react-checkbox";
 import { IconCheck } from "@/assets/svg/dynamic/svgList";
 

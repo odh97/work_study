@@ -1,6 +1,6 @@
 import React from "react";
 import Row from "@/components/Layout/Row";
-import { cn } from "@/lib/utils";
+import { cn } from "@/app/lib/utills";
 import { useSpring, animated } from "@react-spring/web";
 
 type Props = {

@@ -1,7 +1,7 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import IconChevronDown from "@/assets/svg/static/icon-chevron-down.svg";
 import { IconCheck } from "@/assets/svg/dynamic/svgList";
-import { cn } from "@/lib/utils";
+import { cn } from "@/app/lib/utills";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { animated, useSpring } from "@react-spring/web";

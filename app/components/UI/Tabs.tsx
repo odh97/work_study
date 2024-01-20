@@ -1,7 +1,7 @@
 "use client";
 
 import React, { forwardRef, useEffect } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/app/lib/utills";
 import * as RadixTabs from "@radix-ui/react-tabs";
 import { useSpring } from "@react-spring/web";
 import { useGesture } from "@use-gesture/react";

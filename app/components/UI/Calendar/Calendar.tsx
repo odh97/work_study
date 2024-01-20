@@ -3,7 +3,7 @@ import {
   IconCalendar,
   IconLeft,
   IconRight,
-} from "@/assets/svg/dynamic/svgList";
+} from "@/app/assets/svg/dynamic/svgList";
 
 // dayPicker
 import { format, isSameMonth } from "date-fns";
@@ -15,7 +15,7 @@ import {
 } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import "./daypicker.css";
-import { cn } from "@/lib/utils";
+import { cn } from "@/app/lib/utills";
 
 /**
  *   기본 옵션

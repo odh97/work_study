@@ -2,7 +2,7 @@
 //Only use in Toolbar.Root
 import * as Toolbar from "@radix-ui/react-toolbar";
 import React from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/app/lib/utills";
 
 export function ToggleGroup(props: ToggleGroupProps) {
   if (props.type === "single") {

@@ -2,7 +2,7 @@
 import React from "react";
 import * as Avatar from "@radix-ui/react-avatar";
 import Image from "next/image";
-import { cn } from "@/lib/utils";
+import { cn } from "@/app/lib/utills";
 
 export default function AvatarIcon({
   src,

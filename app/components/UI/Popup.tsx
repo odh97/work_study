@@ -7,7 +7,7 @@ import IconFaceBook from "@/assets/images/icon-facebook-dark.png";
 import IconKakao from "@/assets/images/icon-kakaotalk-light.png";
 import IconTwitter from "@/assets/images/icon-twitter-dark.png";
 import Image from "next/image";
-import { cn } from "@/lib/utils";
+import { cn } from "@/app/lib/utills";
 import { IconClose } from "@/assets/svg/dynamic/svgList";
 import ButtonLarge from "@/components/UI/button/ButtonLarge";
 import RadioBox from "@/components/UI/RadioBox";
@@ -208,7 +208,7 @@ function ShareContent({ title, summary }: ShareContentType) {
         >
           <Image
             className={
-              "absolute left-[20px] top-[9px] h-[26px] w-[26px] max-fd:hidden"
+              "max-fd:hidden absolute left-[20px] top-[9px] h-[26px] w-[26px]"
             }
             src={image}
             alt={alt}

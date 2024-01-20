@@ -1,7 +1,7 @@
 "use client";
 
 import React, { forwardRef } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/app/lib/utills";
 import * as Switch from "@radix-ui/react-switch";
 
 interface radioBoxType {

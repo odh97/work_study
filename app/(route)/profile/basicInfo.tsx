@@ -1,7 +1,7 @@
 "use client";
 import React, { FormEvent, useState } from "react";
 import axios from "axios";
-import { useExpertStore } from "@/app/_store/store";
+import { useExpertStore } from "@/app/store/store";
 type addressesObj = {
   address: string;
   roadAddress: string;
@@ -99,7 +99,7 @@ export function BasicInfo() {
 
         <button
           type="submit"
-          className={"mt-3 rounded-xl bg-amber-300 px-10 py-5"}
+          className={"rounded-xl bg-amber-300 mt-3 px-10 py-5"}
         >
           저장 및 다음으로
         </button>
@@ -153,7 +153,7 @@ export function AddressInfo() {
     infoAdd({ data: formDataObj, type: "addressInfo" });
   }
   return (
-    <div className={"mb-5 mt-20 border-t-8 border-amber-600 text-2xl"}>
+    <div className={"border-amber-600 mb-5 mt-20 border-t-8 text-2xl"}>
       <h3>네이버 주소 조회</h3>
       <div>
         <input
@@ -162,7 +162,7 @@ export function AddressInfo() {
           onChange={(e) => setAddressLookup(e.target.value)}
         />
         <button
-          className={"mt-3 rounded-xl bg-amber-300 px-10 py-5"}
+          className={"rounded-xl bg-amber-300 mt-3 px-10 py-5"}
           onClick={handlerAddressLookup}
         >
           주소 조회하기
@@ -175,7 +175,7 @@ export function AddressInfo() {
                 return (
                   <div
                     key={index}
-                    className={"mb-3 rounded border border-amber-500"}
+                    className={"rounded border-amber-500 mb-3 border"}
                     onClick={() => {
                       setAddressLookup(item.roadAddress);
                       setAddressSave(item);
@@ -198,7 +198,7 @@ export function AddressInfo() {
         />
         <button
           type="submit"
-          className={"mt-3 block rounded-xl bg-amber-300 px-10 py-5"}
+          className={"rounded-xl bg-amber-300 mt-3 block px-10 py-5"}
           onClick={handlerAddressSave}
         >
           주소 입력 완료

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Row from "@/components/Layout/Row";
 import { IconLoading } from "@/assets/svg/dynamic/svgList";
 import { animated, useSpring, config } from "@react-spring/web";
-import { cn } from "@/lib/utils";
+import { cn } from "@/app/lib/utills";
 
 export default function Loading({
   className,

@@ -7,7 +7,7 @@ import {
 } from "@/assets/svg/dynamic/svgList";
 import Row from "@/components/Layout/Row";
 import React, { useEffect } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/app/lib/utills";
 import { sendAuthCodeByEmail } from "@/service/authService";
 import { useText } from "@/hook/useText";
 

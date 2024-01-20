@@ -1,6 +1,6 @@
 "use client";
 import Row from "@/components/Layout/Row";
-import { cn } from "@/lib/utils";
+import { cn } from "@/app/lib/utills";
 import IconCertification from "@/assets/svg/dynamic/certification";
 import { useText } from "@/hook/useText";
 

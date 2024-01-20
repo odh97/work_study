@@ -1,7 +1,7 @@
 "use client";
 import { IconDot, IconDotEmpty } from "@/assets/svg/dynamic/svgList";
 import { useState } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/app/lib/utills";
 import Image from "next/image";
 import Col from "@/components/Layout/Col";
 import Row from "@/components/Layout/Row";

@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/app/lib/utills";
 import React, { forwardRef, useState } from "react";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { IconDown } from "@/assets/svg/dynamic/svgList";
@@ -64,7 +64,7 @@ function DropdownSmall(
         <DropdownMenu.Portal>
           <DropdownMenu.Content
             className={cn(
-              "mt-[5px] overflow-y-hidden rounded-[10px] bg-grayscale-white text-center shadow-card",
+              "shadow-card mt-[5px] overflow-y-hidden rounded-[10px] bg-grayscale-white text-center",
               "animate-[slideDownAndFade_0.6s_ease-in-out]",
             )}
           >

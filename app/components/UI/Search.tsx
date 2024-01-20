@@ -1,5 +1,5 @@
 "use client";
-import { cn } from "@/lib/utils";
+import { cn } from "@/app/lib/utills";
 
 import React from "react";
 import { IconSearch } from "@/assets/svg/dynamic/svgList";
