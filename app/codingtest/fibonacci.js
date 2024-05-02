@@ -3,7 +3,7 @@ function fibonacci(n) {
   if (n <= 0) return 0;
   if (n < 2) return 1;
 
-  return (solution(n - 1) + solution(n - 2)) % 1234567;
+  return (fibonacci(n - 1) + fibonacci(n - 2)) % 1234567;
 }
 
 // 반복문 형식

@@ -1,26 +1,25 @@
-// 재귀형식
-function hanoiTop(n) {
-  if (n === 0) return [[]];
-  if (n === 1) return [[1, 3]];
+// 다시 한번 풀어보기
 
-  let answer = [[]];
+function solution(n) {
+  const result = [];
 
-  return answer;
+  const hanoi = (n, from, via, to) => {
+    if (n === 1) {
+      result.push([from, to]);
+    }
+    if (n === 2) {
+      result.push([from, via], [from, to], [via, to]);
+      return;
+    }
+
+    hanoi(n - 1, from, to, via);
+    result.push([from, to]);
+    hanoi(n - 1, via, from, to);
+  };
+
+  hanoi(n, 1, 2, 3);
+
+  return result;
 }
 
-console.log(hanoiTop(1));
-console.log(hanoiTop(2));
-console.log(hanoiTop(3));
-console.log(hanoiTop(4));
-//
-// ===1===
-// 1  2 3
-// 2  3
-// 3
-//
-//
-// ===2===
-// x  1 1
-//
-// ===3===
-// x  x 2
+console.log(solution(4));
