@@ -40,9 +40,9 @@ function arrayProblem1(data) {
       const mid = Math.floor((start + end) / 2);
       const midAge = answer[mid].split(" ")[0];
       if (midAge < age) {
-        start = mid + 1;
+        start = mid;
       } else {
-        end = mid + 1;
+        end = mid;
       }
     }
 
