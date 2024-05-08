@@ -6,6 +6,8 @@ let input = fs.readFileSync("./baekjoon/ageSorting.txt").toString();
 let [number, ...inputArray] = input.trim().split("\r\n");
 
 function arrayProblem1(data) {
+  console.log("start");
+
   let answer = [];
 
   for (let i = 0; i < data.length; i++) {
@@ -23,33 +25,34 @@ function arrayProblem1(data) {
       continue;
     }
 
-    // for (let j = 0; j < answer.length + 1; j++) {
-    //   const answerItem = answer[j].split(" ")[0];
-    //
-    //   if (answerItem > item) {
-    //     answer.splice(j, 0, data[i]);
-    //     break;
-    //   }
-    // }
+    for (let j = 0; j < answer.length + 1; j++) {
+      const answerItem = answer[j].split(" ")[0];
 
-    let start = 0;
-    let end = answer.length;
-    const age = data[i].split(" ")[0];
-
-    while (start < end) {
-      const mid = Math.floor((start + end) / 2);
-      const midAge = answer[mid].split(" ")[0];
-      if (midAge < age) {
-        start = mid;
-      } else {
-        end = mid;
+      if (answerItem > item) {
+        answer.splice(j, 0, data[i]);
+        break;
       }
     }
 
-    answer.splice(start, 0, data[i]);
+    //   let start = 0;
+    //   let end = answer.length;
+    //   const age = data[i].split(" ")[0];
+    //
+    //   while (start < end) {
+    //     const mid = Math.floor((start + end) / 2);
+    //     const midAge = answer[mid].split(" ")[0];
+    //     if (midAge < age) {
+    //       start = mid + 1;
+    //     } else {
+    //       end = mid;
+    //     }
+    //   }
+    //
+    //   answer.splice(start, 0, data[i]);
   }
 
   console.log(answer.join("\n"));
 }
-
-arrayProblem1(inputArray);
+console.time("1");
+arrayProblem1(["45 F", "21 C", "21 D", "20 B", "21 E", "10 A", "59 G"]);
+console.timeEnd("1");
